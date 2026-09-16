@@ -1,8 +1,7 @@
-# CONTROL LED BRIGHTNESS USING PWM AND POTENTIOMETER
-
-## EXP 1(B) CONTROL LED BRIGHTNESS USING PWM AND POTENTIOMETER
+# EXP 4 : CONTROL LED BRIGHTNESS USING PWM AND POTENTIOMETER
 
 ### Aim
+
 To control the brightness of an LED using a Potentiometer and PWM (Pulse Width Modulation) with an Arduino UNO Board.
 
 # Hardware / Software Tools Required
@@ -19,7 +18,8 @@ To control the brightness of an LED using a Potentiometer and PWM (Pulse Width M
 # Circuit Diagram
 
 ---
-To upload
+<img width="422" height="747" alt="image" src="https://github.com/user-attachments/assets/0d310fab-1c4c-48d5-86f4-04b3a2cdb82c" />
+
 ---
 
 # Procedure
@@ -69,11 +69,48 @@ To upload
 
 # Program
 
----
-To upload
----
+```
+// Control LED Brightness using PWM and Potentiometer
 
-# Observation
+const int potPin = A0;     // Potentiometer connected to A0
+const int ledPin = 11;      // PWM pin connected to LED
+
+int potValue = 0;
+int brightness = 0;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+
+  // Read potentiometer value (0 to 1023)
+  potValue = analogRead(potPin);
+
+  // Convert to PWM range (0 to 255)
+  brightness = map(potValue, 0, 1023, 0, 255);
+
+  // Set LED brightness
+  analogWrite(ledPin, brightness);
+
+  // Display values on Serial Monitor
+  Serial.print("Potentiometer: ");
+  Serial.print(potValue);
+  Serial.print("  Brightness: ");
+  Serial.println(brightness);
+
+  delay(10);
+}
+```
+
+# Output
+
+<img width="1600" height="1284" alt="image" src="https://github.com/user-attachments/assets/7c5eb2a8-1d84-462c-bba5-ecea09f31c11" />
+
+
+<img width="940" height="520" alt="image" src="https://github.com/user-attachments/assets/09b68f23-02cd-4d69-a731-f0d6ae865e88" />
+
 
 
 # Result
